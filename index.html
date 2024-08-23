@@ -1,0 +1,63 @@
+
+<!DOCTYPE html> 
+
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+		<style>* {  font-family:"Open Sans";  }</style>
+		
+		<script src="ivank.js"></script>
+		<script src="tw.js"></script>
+		
+		<script src="SND.js"></script>
+		<script src="Scheme.js"></script>
+		<script src="State.js"></script>
+		<script src="Game.js"></script>
+		<script src="Game.Item.js"></script>
+		<script>
+		
+		
+			var stage, g;
+			function resize(e) {
+				var w = stage.stageWidth, h = stage.stageHeight;
+				if(g) g.uiresize(w,h);
+			}
+			
+			function go() {
+				document.fonts.ready.then(function() {
+					stage = new Stage("c");
+					stage.addEventListener(Event.RESIZE, resize); 
+					g = new Game();
+					stage.addChild(g);
+				});	
+			}
+		
+			
+		</script>
+	</head>
+	
+	<body onload="go()">
+		<canvas id="c"></canvas>
+<!--客服 开始-->
+<script src="//g8hh.github.io/static/js/jquery.min.js"></script>
+<link rel="stylesheet" href="//g8hh.github.io/static/css/kf.css" type="text/css" media="screen" charset="utf-8">
+<script src="//g8hh.github.io/static/js/kf.js"></script>
+<!-- 客服 结束 -->
+<!--站长统计-->
+    <div style="display: none">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?6581389daf4dd6fe7dbb4d20fdcb52a6";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    </div>
+	</body>
+</html>
