@@ -1582,7 +1582,7 @@ BitmapData._nhpot = function(x) {
 		var c = this.canvas;
 		gl = c.getContext("webgl", par);
 		if (!gl) gl = c.getContext("experimental-webgl", par);
-		if (!gl) alert("Could not initialize WebGL. Try to update your browser or graphic drivers.");
+		if (!gl) alert("无法初始化WebGL。尝试更新浏览器或图形驱动程序.");
 		
 		gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, true);
 		

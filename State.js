@@ -47,7 +47,7 @@
 		if(o[5]!=null) {
 			var om = st.money;
 			st.Step((Date.now()-o[5])/1000);
-			if(loud && st.money>om) alert("You made "+Game.PrintM(st.money-om)+" while away!",5);
+			if(loud && st.money>om) alert("你获得了 "+Game.PrintM(st.money-om)+" 在你离开的时候!",5);
 		}
 		return st;
 	}
@@ -92,8 +92,8 @@
 				var un = sit.milestones[j], ii=un[0];
 				its[ii][  ii==i?3 : 4  ] *= un[1];
 				if(loud) {
-					if(ii==i) alert(sit.name+" Tool is "+un[1]+"x faster");
-					else      alert(Scheme.items[ii].name+" Tool makes "+un[1]+"x more peas");
+					if(ii==i) alert(cnItem(sit.name)+" 工具 "+un[1]+"x 更快了");
+					else      alert(cnItem(Scheme.items[ii].name)+" 工具产生 "+un[1]+"x 更多的豌豆");
 				}
 			}
 		}
@@ -104,7 +104,7 @@
 			for(var j=0; j<its.length; j++) min=Math.min(min,its[j][0]);
 			if(min==ncnt) {
 				for(var j=0; j<its.length; j++) its[j][3]*=un[1];
-				if(loud) setTimeout(function() {alert("All tools "+un[1]+"x faster");}, 7);
+				if(loud) setTimeout(function() {alert("所有工具 "+un[1]+"x 更快了");}, 7);
 			}
 		}
 		
@@ -115,7 +115,7 @@
 		var upg = Scheme.upgrades[i], ii=upg[0];
 		if(ii==-1) for(var j=0; j<this.items.length; j++)  this.items[j][4] *= upg[1];
 		else this.items[ii][4] *= upg[1];
-		if(loud) alert(ii==-1 ? "All items make "+upg[1]+"x more!" : Scheme.items[ii].name+" Tool makes "+upg[1]+"x more!");
+		if(loud) alert(ii==-1 ? "所有物品生成 "+upg[1]+"x 更多!" : Scheme.items[ii].name+" 工具生成 "+upg[1]+"x 更多!");
 		this.money -= upg[2];
 		this.upgrs.push(i);  this.umap[i]=true;
 		this.seq.push(-1-i);
@@ -125,7 +125,7 @@
 		var it = this.items[i], sit = Scheme.items[i];
 		if(it[1]==1 || this.money<sit.acost) return;
 		it[1]=1;  this.money-=sit.acost;
-		if(loud) alert(sit.name+" Tool automated!");
+		if(loud) alert(cnItem(sit.name)+" 工具自动了!");
 	}
 	
 	State.prototype.GetWands = function() {

@@ -23,7 +23,7 @@
 	
 		var ox = 200;
 		
-		var lbl = this._lbl = new Text(500,0,60);  lbl.SetValue(sit.name+" Tool");  this.addChild(lbl);  lbl.x=ox;  lbl.y=20
+		var lbl = this._lbl = new Text(500,0,60);  lbl.SetValue(cnItem(sit.name)+" 工具");  this.addChild(lbl);  lbl.x=ox;  lbl.y=20
 		
 		var bar = this._bar = new Bar(300,40);  this.addChild(bar);  bar.x = ox;
 		var cbar = this._cbar = new Bar(130,44);  this.addChild(cbar);  cbar.y = 200-44;
@@ -35,7 +35,7 @@
 		
 		var buy = this._buy = new Button("",500);  buy.x = ox;  buy.y=110;  this.addChild(buy);
 		
-		var btxt = this._btxt = new Text(100,0,35);  buy.addChild(btxt);   btxt.SetValue("Buy");  btxt.x=16;  btxt.y=2;
+		var btxt = this._btxt = new Text(100,0,35);  buy.addChild(btxt);   btxt.SetValue("购买");  btxt.x=16;  btxt.y=2;
 		var bcnt = this._bcnt = new Text(140,0,42);  buy.addChild(bcnt);   bcnt.SetValue("+1");  bcnt.x=16;  bcnt.y=42;
 		
 		var rgt = this._rgt = new Sprite();  rgt.y = 110;  this.addChild(rgt);
@@ -53,7 +53,7 @@
 	Game.Item.getIcon = function(i) {
 		var make = new Sprite();   
 		make.graphics.beginFill(0xffffff,0.2);  make.graphics.drawRoundRect(0,0,200,200,40,40);
-		if(i==10) {  var t=new Text(200,1,90);  t.y=50;  t.SetValue("All");  make.addChild(t);  return make;  }
+		if(i==10) {  var t=new Text(200,1,90);  t.y=50;  t.SetValue("全部");  make.addChild(t);  return make;  }
 		if(Game.Item.icons==null) {
 			var sits = Scheme.items; Game.Item.icons = [];
 			for(var j=0; j<sits.length; j++) {
@@ -198,7 +198,7 @@
 		if(n==this._v) return;  this._v=n;
 		var v = Game.PrintM(n,true);
 		this._val.SetValue(v[0]);
-		this._cur.SetValue(v[1]+(ti==null ? "" : " / sec"));
+		this._cur.SetValue(v[1]+(ti==null ? "" : " / 秒"));
 	}
 
 	function Text(w, align,sz,clr) {

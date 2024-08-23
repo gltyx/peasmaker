@@ -19,7 +19,7 @@
 		
 		setTimeout(function() {  fetch("//www.photopea.com/papi/event.php?id=web_Peasmaker");  },30000);
 		
-		var lbs = ["Tools","Milestones","Automate","Upgrade","Ascend"];
+		var lbs = ["工具","里程碑","自动","升级","转生"];
 		for(var i=0; i<5; i++) {
 			var btn = new Button(lbs[i],300);  btn.y = i*120;
 			this._menu.addChild(btn);
@@ -33,7 +33,7 @@
 		
 		
 		var top = this._top = new Sprite();  this.addChild(top);
-		var lbl = new Text(220,2,60);  lbl.SetValue("Peas:");  top.addChild(lbl);  lbl.x = -250;  lbl.y=33;
+		var lbl = new Text(220,2,60);  lbl.SetValue("豌豆:");  top.addChild(lbl);  lbl.x = -220;  lbl.y=33;
 		var money = this._money = new Money(3,80);  money.y=16;
 		top.addChild(money);
 		
@@ -70,9 +70,9 @@
 			var y = i*1000/11;
 			var ico = Game.Item.getIcon(i);  ico.y=y;
 			ico.scaleX = ico.scaleY = 0.75*(1000/11)/200;  scr.addChild(ico);
-			var lbl = new Text(130,0,40);  lbl.SetValue("Level:");  lbl.scaleX=lbl.scaleY=0.5; 
+			var lbl = new Text(130,0,40);  lbl.SetValue("等级:");  lbl.scaleX=lbl.scaleY=0.5; 
 			scr.addChild(lbl);  lbl.y=y+10;  lbl.x=77;
-			var lb2 = new Text(130,0,40);  lb2.SetValue("Speed:");  lb2.scaleX=lb2.scaleY=0.5; 
+			var lb2 = new Text(130,0,40);  lb2.SetValue("速度:");  lb2.scaleX=lb2.scaleY=0.5; 
 			scr.addChild(lb2);  lb2.y=y+41;  lb2.x=lbl.x;
 			var ms = [];  this.miles.push(ms);
 			for(var j=0; j<10; j++) {
@@ -107,13 +107,13 @@
 		var wand = new Bitmap(new BitmapData("img/tools/mwand.png"));  wand.scaleX = wand.scaleY = 2;  wand.x = 300;
 		var at = this._atext = new Text(900,1,50);  at.x = 50;  at.y = 370;
 		at._tf.wordWrap=true;  at._tf.height=at._tf.textHeight = 500;
-		at.SetValue("Magic wand");  scr.addChild(at);
+		at.SetValue("魔杖");  scr.addChild(at);
 		scr.addChild(wand);
 		
-		var asc = new Button("Ascend",500);  asc.x = 250;  asc.y=800;
+		var asc = new Button("转生",500);  asc.x = 250;  asc.y=800;
 		asc.addEventListener2(MouseEvent.MOUSE_UP, function() {  
 			var wcnt = Game.PrintM(Math.floor(this.state.GetWands()),null,true);
-			if(window.confirm("Are you sure? You will lose all your progress, but you will get "+wcnt+" Magic Wands.")) {  
+			if(window.confirm("你确定吗?你会失去所有的进度，但你会得到 "+wcnt+" 魔杖.")) {  
 				alert("+"+wcnt+" Magic Wands!",2);  this.state.Ascend();  SND.play("levelup");  
 			}  
 		}, this);
@@ -123,7 +123,7 @@
 		var gr = this._alert.graphics;  gr.beginFill(0);  gr.drawRect(0,0,600,80);
 		this.addChild(this._alert);
 		this._atxt = new Text(600,1,28);  var tf=this._atxt._tf;  tf.wordWrap=true;  tf.height=tf.textHeight=80;  tf.y=20;  this._alert.addChild(this._atxt);
-		this._atxt.SetValue("Hello Hello hey this is Ivan speaking. How do you like my game? There is a game for everyone.");
+		this._atxt.SetValue("你好，你好，我是伊万。你觉得我的游戏怎么样?这是一个适合每个人的游戏.");
 		
 		
 		this._alend = Date.now();
@@ -172,12 +172,12 @@
 		this.addEventListener2(Event.ENTER_FRAME, this.onEF,this);
 		
 		
-		setInterval(function() {  alert("* Tools produce when the game is closed.",3)  }, 3*60000);
+		setInterval(function() {  alert("* 工具在游戏结束时产生.",3)  }, 3*60000);
 		setInterval((function() {
 			var min=1e9, ms=Scheme.milestones, its=this.state.items;
 			for(var j=0; j<its.length; j++) min=Math.min(min,its[j][0]);
 			var mi=0;  while(ms[mi][2]<=min) mi++;  var mil = ms[mi];  console.log(min, mil);
-			alert("Have "+mil[2]+" of each tool to produce "+mil[1]+"x faster.",3);
+			alert("拥有 "+mil[2]+" 每种工具可以生成 "+mil[1]+"x 更快.",3);
 		}).bind(this), 3*71000);
 	}
 	Game.prototype = new Sprite();
@@ -276,7 +276,7 @@
 		else if(si!=-1) st.Step(ct*60);
 		else if(tgt==this._step) {
 			var bi = this._bi = (this._bi+1)%5;
-			this._step.SetValue(["+1","+10","+100","Next","Max"][bi]);
+			this._step.SetValue(["+1","+10","+100","下一个","最大"][bi]);
 			//alert(bi);
 		}
 		else {  // upgrade
@@ -296,8 +296,8 @@
 		
 		if((this.fram&7)==0) {
 			this._money.SetValue(st.money);
-			var hstr = "Time: "+Game.PrintT(Math.floor(st.time))+"\nPassive income:\n"
-				+Game.PrintM(st.GetTotalRate(true))+" / sec";
+			var hstr = "时间: "+Game.PrintT(Math.floor(st.time))+"\n被动收入:\n"
+				+Game.PrintM(st.GetTotalRate(true))+" / 秒";
 			if(hstr!=this._hstr) {  this._help.text = hstr;  this._hstr=hstr;  }
 		}
 		
@@ -315,8 +315,8 @@
 		this._step.visible = st.wands!=0 || st.items[0][0]>=20;
 		
 		if(st.wands==0) {
-			if(this._msg0==null && st.money<5) {  this._msg0=true;  alert("Click the Move Tool to make Peas!",5);  }
-			if(this._msg1==null && st.items[1][0]==0 && st.money>=5) {  this._msg1=true;  alert("Buy another tool to make 2x more Peas!",3);  }
+			if(this._msg0==null && st.money<5) {  this._msg0=true;  alert("点击移动工具制作豌豆!",5);  }
+			if(this._msg1==null && st.items[1][0]==0 && st.money>=5) {  this._msg1=true;  alert("再买一个工具，就可以多做2倍豌豆了!",3);  }
 		}
 		
 		
@@ -349,7 +349,7 @@
 		}
 		else if(si==4) {
 			var wnd = Math.floor(st.GetWands());
-			this._atext.SetValue("Each Magic Wand increases the revenue by 1%.\n\nYou have "+Game.PrintM(st.wands,null,true)+" wands.\nAscend to restart the game with "+Game.PrintM(wnd,null,true)+" more wands!");
+			this._atext.SetValue("每根魔杖增加收益 1%.\n\n你有 "+Game.PrintM(st.wands,null,true)+" 魔杖.\n转生会重新开始游戏但是会给你 "+Game.PrintM(wnd,null,true)+" 魔杖!");
 		}
 		var ui, got;
 		
@@ -361,7 +361,7 @@
 			var it = st.items[ui];  btn.visible=it!=null;  if(it==null) continue;
 			var sit = Scheme.items[ui];
 			btn.alpha= (st.money<sit.acost ? 0.2 : 1);  if(st.money>=sit.acost) got=true;
-			btn.SetValue("Automate "+sit.name+" Tool\n"+Game.PrintM(sit.acost));
+			btn.SetValue("自动 "+cnItem(sit.name)+" 工具\n"+Game.PrintM(sit.acost));
 			btn._ct = ui;
 			btn.icon.icon.bitmapData = Game.Item.icons[ui];
 			ui++;
@@ -375,7 +375,7 @@
 			while(st.GotUpgrade(ui)) ui++;
 			
 			var uit = Scheme.upgrades[ui];  btn.visible=uit!=null;  if(uit==null) continue;
-			var name = uit[0]==-1? "All" : Scheme.items[uit[0]].name+" Tool";
+			var name = uit[0]==-1? "全部" : cnItem(Scheme.items[uit[0]].name)+" 工具";
 			btn.SetValue(name+" x"+uit[1]+"\n"+Game.PrintM(uit[2]));
 			btn.alpha = (st.money<uit[2] ? 0.2 : 1);  if(st.money>=uit[2]) got=true;
 			btn.icon.icon.bitmapData = Game.Item.icons[uit[0]==-1?10:uit[0]];
